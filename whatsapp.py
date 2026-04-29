@@ -12,13 +12,15 @@ import webbrowser
 from database import Business
 
 DEFAULT_TEMPLATE = (
-    "Ola {nome}! Tudo bem?\n\n"
-    "Encontrei o {nome} no Google Maps e gostaria de fazer uma proposta.\n"
-    "Podemos conversar?"
+    "Ola, {nome}! Tudo bem?\n\n"
+    "Somos a Hyska, uma empresa especializada em criar sites e sistemas sob medida.\n\n"
+    "Ajudamos empresas como a sua a se destacarem no digital, conquistarem mais clientes e automatizarem processos internos para ganhar tempo e escalar resultados.\n\n"
+    "Gostariamos de saber se voces tem interesse em modernizar sua presenca online ou criar uma solucao tecnologica personalizada.\n\n"
+    "Se quiser, podemos marcar uma conversa rapida para entender suas necessidades."
 )
 
 PLACEHOLDERS_HELP = (
-    "Placeholders disponiveis: {nome}, {endereco}, {telefone}, {website}, "
+    "Placeholders: {nome}, {endereco}, {telefone}, {email}, {website}, "
     "{avaliacao}, {avaliacoes}, {query}, {local}"
 )
 
@@ -50,6 +52,7 @@ def render_template(template: str, business: Business) -> str:
         "{nome}": business.name or "",
         "{endereco}": business.address or "",
         "{telefone}": business.phone or "",
+        "{email}": business.emails or "",
         "{website}": business.website or "",
         "{avaliacao}": str(business.rating) if business.rating is not None else "",
         "{avaliacoes}": str(business.total_reviews) if business.total_reviews is not None else "",
